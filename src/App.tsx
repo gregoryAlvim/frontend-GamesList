@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
-        <BrowserRouter>
+        <BrowserRouter basename="/frontend-GamesList">
           <GamesContextProvider>
             <Router />
             <ToastContainer toastClassName="foo" autoClose={3000} />
