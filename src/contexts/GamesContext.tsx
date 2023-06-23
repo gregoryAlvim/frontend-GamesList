@@ -26,7 +26,8 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
   const [gamesData, setGamesData] = useState<GameType[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const AUTH_EMAIL = import.meta.env.VITE_AUTH_EMAIL
+  const AUTH_EMAIL =
+    import.meta.env.VITE_AUTH_EMAIL || 'gregori.alvim@gmail.com'
   const errorStatusCode = 500
 
   const gamesGenre = ['Todos', ...new Set(gamesData.map((game) => game.genre))]
