@@ -6,7 +6,9 @@ import {
   useState,
 } from 'react'
 import { api } from '../lib/axios'
+import { toast } from 'react-toastify'
 import { GameType } from '../@types/mockes'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface GamesContextType {
   gamesData: GameType[]
@@ -29,10 +31,16 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
 
   const gamesGenre = ['Todos', ...new Set(gamesData.map((game) => game.genre))]
 
+  function showToastError(message: string) {
+    toast.error(message)
+  }
+
   async function fetchGames() {
     try {
       const timer = setTimeout(() => {
-        alert('O servidor demorou para responder, tente mais tarde')
+        return showToastError(
+          'O servidor demorou para responder, tente mais tarde',
+        )
       }, 5000)
 
       const response = await api.get('data', {
@@ -43,12 +51,15 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
 
       clearTimeout(timer)
 
+      setIsLoading(false)
       setGamesData(response.data)
     } catch (error: any) {
       if (error.response.status >= errorStatusCode) {
-        alert('O servidor falhou em responder, tente recarregar a página!')
+        showToastError(
+          'O servidor falhou em responder, tente recarregar a página!',
+        )
       } else {
-        alert(
+        showToastError(
           'O servidor não conseguirá responder por agora, tente voltar novamente mais tarde!',
         )
       }
@@ -58,9 +69,8 @@ export function GamesContextProvider({ children }: GamesContextProviderProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchGames()
-      setIsLoading(false)
-    }, 2500)
-
+    })
+    console.log('chamou')
     return () => clearTimeout(timer)
   }, [])
 
