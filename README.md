@@ -8,6 +8,10 @@ https://github.com/gregoryAlvim/frontend-GamesList/assets/43592358/c2d3f991-07b4
 
 #
 
+![image](https://github.com/gregoryAlvim/frontend-GamesList/assets/43592358/cfa2cadb-2532-405a-a2a5-b3fcecf760bb)
+
+#
+
 <p align="center">
    <a href="#sobre">Sobre </a> •
    <a href="#features"> Features </a> •
