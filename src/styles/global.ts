@@ -25,4 +25,20 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 400;
       font-size: 1.4rem;
    }
+
+   ::-webkit-scrollbar {
+      width: 0.8rem;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      width: 5rem;
+      border-radius: 0.8rem;  
+   }
+
+   input::-webkit-outer-spin-button,
+   input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+   }
+
 `
