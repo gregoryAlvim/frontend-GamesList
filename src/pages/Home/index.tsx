@@ -16,7 +16,11 @@ export function Home() {
       ? gamesData.filter((game) =>
           game.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
         )
-      : gamesData.filter((game) => game.genre.includes(selectedGenre))
+      : gamesData.filter(
+          (game) =>
+            game.genre.includes(selectedGenre) &&
+            game.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+        )
 
   return (
     <S.Container>
@@ -26,7 +30,7 @@ export function Home() {
         <S.SearchContainer>
           <MagnifyingGlass size={20} />
           <S.SearchInput
-            placeholder="Pesquise pelo seu jogo favorito aqui!"
+            placeholder="Pesquise seu jogo favorito!"
             onChange={(event) => setSearch(event.target.value)}
           />
         </S.SearchContainer>
